@@ -24,9 +24,9 @@ Initially, this project is adopting the Watch/Minimal Build pattern.
 
 * Utilize the Google Closure Compiler 
 * Angular 
-..* 1.x - In Work
-..* 1.x - ES6 (future)
-..* 2.x  - ES6 (future)
+ * 1.x - In Work
+ * 1.x - ES6 (future)
+ * 2.x  - ES6 (future)
 * Cross platform - In Work
 * SCSS Support - In Work
 * Lint Support (future)
