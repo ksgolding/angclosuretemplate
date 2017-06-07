@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{application.name}}</title>
+    <!-- Include compiled css -->
+    <link href="app.css"  rel="stylesheet" type="text/css"></link>
+    <!-- Include vendor libs -->
+    <script src="vendor.js"></script>
+</head>
+<body ng-controller="main">
+    <div>{{application.name}}</div>
+    <div class="view-container">
+      <div ng-view class="view-frame"></div>
+    </div>
+    <script src="app.min.js"></script>
+</body>
+</html>
