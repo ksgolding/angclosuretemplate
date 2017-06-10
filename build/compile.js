@@ -31,6 +31,15 @@ function addExterns (params) {
   // TODO: Add externs folder.
 }
 
+/**
+ * Add a --flag [value] for each value in the param array.
+ */
+function addParamArray(params, flag, paramArray) {
+  paramArray.forEach(function(param){
+    params.push('--' + flag +'=' + param);
+  });
+}
+
 function addDebugParams (params) {
   // params.push('--debug');
   params.push('--source_map_format=V3')
@@ -46,6 +55,10 @@ gcc_params.push('--angular_pass');
 // TODO: Optional
 addDebugParams(gcc_params);
 
+// ADD linting params
+addParamArray(gcc_params, 'jscomp_error', globals.GCC_ERROR_FLAGS);
+addParamArray(gcc_params, 'jscomp_warning', globals.GCC_WARNING_FLAGS);
+
 // Include closure js libs
 gcc_params.push("--process_closure_primitives true");
 
@@ -55,11 +68,12 @@ addExterns(gcc_params);
 // TODO Should be configurable.
 gcc_params.push("--compilation_level SIMPLE");
 
-// Add the main application js files.
+// Add the main application js files, unfortunately order matters here.
 gcc_params.push(" --js " + path.join(globals.APP_PATH, 'controller.js'));
 gcc_params.push(" --js " + path.join(globals.APP_PATH, 'routes.js'));
 gcc_params.push(" --js " + path.join(globals.APP_PATH, 'module.js'));
 gcc_params.push(" --js " + path.join(globals.APP_PATH, 'app.js'));
+
 // Add all the rest of the files.
 gcc_params.push(" --js " + path.join(globals.APP_PATH, '**/**.js'));
 
@@ -69,7 +83,7 @@ gcc_params.push("--js_output_file " + OUTPUT_PATH);
 // Create build command
 var buildCommand = globals.CLOSURE_COMPILER + '  ' + gcc_params.join(' ');
 
-console.log(buildCommand);
+// console.log(buildCommand);
 
 // Run the build command
 globals.run(buildCommand).then(data => {
@@ -79,5 +93,13 @@ globals.run(buildCommand).then(data => {
   console.log('Closure compile completed successfully'.green)
 }).catch(err => {
   console.log('Closure compile failed'.red);
-  console.log(err);
+  var messages = err.message.split('\n');
+  messages.forEach(function(msg, idx){
+    if(idx === 0) {
+      console.log(msg.gray);
+    } else {
+      console.log(msg.red);
+    }
+  });
+  
 });

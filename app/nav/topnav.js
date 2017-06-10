@@ -14,7 +14,8 @@ app.topNavDirective = function() {
 app.module.directive('topnav', app.topNavDirective);
 
 /**
- * @param {angular.scope}
+ * @param {!angular.Scope} $scope
+ * @constructor
  * @ngInject
  */
 app.TopNavCtrl = function($scope) {

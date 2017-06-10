@@ -1,11 +1,12 @@
 goog.provide('app.controller');
 
 /**
+ * @param {!angular.Scope} $scope 
+ * @constructor
  * @ngInject
  */
 app.controller = function($scope) {
-  this.scope = $scope;;
-  this.scope.$root['application'] = {
+  $scope.$root['application'] = {
     'name': 'App Name (aka title)'
   };
 }

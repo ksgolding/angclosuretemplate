@@ -48,5 +48,24 @@ var path = require('path');
     // the google closure contrib/externs 
     // folder
     GCC_EXTERNS: ['angular-1.6.js',
-                    'jquery-3.2.js']
+                'angular-1.6-http-promise_templated.js',
+                'angular-1.6-mocks.js',
+                'angular-1.6-q_templated.js',
+                'angular-1.6-resource.js',
+                'angular-1.6-test.js',
+                'jquery-3.2.js'],
+
+  // All? error/waring compiler flags:
+  // accessControls,ambiguousFunctionDecl,checkDebuggerStatement,checkEventfulObjectDisposal,
+  // checkRegExp,checkTypes,checkVars,const,constantProperty,duplicate,duplicateMessage,es5Strict,es3,
+  // externsValidation,fileoverviewTags,globalThis,internetExplorerChecks,invalidCasts,
+  // missingProperties,nonStandardJsDocs,strictModuleDepCheck,undefinedNames,undefinedVars,unknownDefines,
+  // uselessCode,visibility, deprecated, unknownDefines
+  // Error Flags:
+  GCC_ERROR_FLAGS: [ 'accessControls','ambiguousFunctionDecl','checkDebuggerStatement','checkEventfulObjectDisposal',
+    'checkRegExp','checkTypes','checkVars','const','constantProperty','duplicate','duplicateMessage','es5Strict','es3',
+    'externsValidation','fileoverviewTags','globalThis','internetExplorerChecks','invalidCasts','missingProperties',
+    'nonStandardJsDocs','strictModuleDepCheck','undefinedNames','undefinedVars','unknownDefines','uselessCode','visibility'],
+  // Warning flags  
+  GCC_WARNING_FLAGS: ['deprecated', 'unknownDefines']
 };

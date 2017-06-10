@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Build Debug",
-            "program": "${workspaceRoot}\\build\\watch.js"
+            "program": "${workspaceRoot}\\build\\compile.js"
         },
         {
             "type": "node",
