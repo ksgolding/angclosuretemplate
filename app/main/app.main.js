@@ -5,6 +5,6 @@ goog.require('app.topNavDirective');
 
 app.module.directive('main', function() {
     return {
-        'templateUrl': 'main/main.html'
-    }
+        'templateUrl': 'main/main.html',
+    };
 });

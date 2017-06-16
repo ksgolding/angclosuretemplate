@@ -7,8 +7,8 @@ app.topNavDirective = function() {
     return {
         'templateUrl': 'nav/topnav.html',
         'controller': app.TopNavCtrl,
-        'controllerAs': 'vm'
-    }
+        'controllerAs': 'vm',
+    };
 };
 
 app.module.directive('topnav', app.topNavDirective);
@@ -21,16 +21,16 @@ app.module.directive('topnav', app.topNavDirective);
 app.TopNavCtrl = function($scope) {
     this.scope = $scope;
 
-    this['menu'] = [ {
-        'link':'#',
-        'title': 'link 1'
+    this['menu'] = [{
+        'link': '#',
+        'title': 'link 1',
     },
     {
-      'link':'#',
-      'title': 'link 2'
+      'link': '#',
+      'title': 'link 2',
     },
      {
-      'link':'#',
-      'title': 'link 3'
+      'link': '#',
+      'title': 'link 3',
     }];
 };

@@ -5,9 +5,7 @@ goog.require('app.routes');
 
 // Define the `app` module
 app.module = angular.module('app', [
-  'ngRoute'
+  'ngRoute',
 ]).controller('main', app.controller).config(app.routes);
-
-
 
 

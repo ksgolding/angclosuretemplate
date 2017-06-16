@@ -54,13 +54,6 @@ var path = require('path');
                 'angular-1.6-resource.js',
                 'angular-1.6-test.js',
                 'jquery-3.2.js'],
-
-  // All? error/waring compiler flags:
-  // accessControls,ambiguousFunctionDecl,checkDebuggerStatement,checkEventfulObjectDisposal,
-  // checkRegExp,checkTypes,checkVars,const,constantProperty,duplicate,duplicateMessage,es5Strict,es3,
-  // externsValidation,fileoverviewTags,globalThis,internetExplorerChecks,invalidCasts,
-  // missingProperties,nonStandardJsDocs,strictModuleDepCheck,undefinedNames,undefinedVars,unknownDefines,
-  // uselessCode,visibility, deprecated, unknownDefines
   // Error Flags:
   GCC_ERROR_FLAGS: [ 'accessControls','ambiguousFunctionDecl','checkDebuggerStatement','checkEventfulObjectDisposal',
     'checkRegExp','checkTypes','checkVars','const','constantProperty','duplicate','duplicateMessage','es5Strict','es3',

@@ -11,8 +11,10 @@
     "compile": "node build/compile.js",
     "watch": "node build/watch.js",
     "server": "http-server -c-1 -o",
-    "build": "npm run clean && npm run copy && npm run scss && npm run bundle && npm run compile",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && npm run lint-fix && npm run lint && npm run copy && npm run scss && npm run bundle && npm run compile",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint-fix": "eslint app/**.js --fix",
+    "lint": "eslint app/**.js"
   },
   "keywords": [
     "angular",
@@ -25,6 +27,7 @@
     "angular": "^1.6.4",
     "angular-route": "^1.6.4",
     "bluebird": "^3.5.0",
+    "eslint-config-google": "^0.8.0",
     "fs-extra": "^3.0.0",
     "google-closure-compiler": "^20170423.0.0",
     "jquery": "^3.2.1",
@@ -33,6 +36,8 @@
   "devDependencies": {
     "colors": "^1.1.2",
     "concat-files": "^0.1.1",
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.8.0",
     "node-cmd": "^3.0.0",
     "node-sass": "^4.5.3",
     "node-watch": "^0.5.4"
