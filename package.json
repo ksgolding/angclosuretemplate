@@ -11,9 +11,10 @@
     "compile": "node build/compile.js",
     "watch": "node build/watch.js",
     "server": "http-server -c-1 -o",
-    "build": "npm run clean && npm run lint-fix && npm run lint && npm run copy && npm run scss && npm run bundle && npm run compile",
+    "build": "npm run clean && npm run lint && npm run copy && npm run scss && npm run bundle && npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --fix app/**.js"
+    "lint": "eslint --fix app/**.js",
+    "start": "npm run build && npm run server"
   },
   "keywords": [
     "angular",
