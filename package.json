@@ -13,8 +13,7 @@
     "server": "http-server -c-1 -o",
     "build": "npm run clean && npm run lint-fix && npm run lint && npm run copy && npm run scss && npm run bundle && npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint-fix": "eslint app/**.js --fix",
-    "lint": "eslint app/**.js"
+    "lint": "eslint --fix app/**.js"
   },
   "keywords": [
     "angular",
