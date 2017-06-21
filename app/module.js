@@ -1,11 +1,6 @@
-goog.provide('app.module');
+import routes from 'routes';
+import controller from 'controller';
 
-goog.require('app.controller');
-goog.require('app.routes');
-
-// Define the `app` module
-app.module = angular.module('app', [
+export const module = angular.module('app', [
   'ngRoute',
-]).controller('main', app.controller).config(app.routes);
-
-
+]).controller('main', controller).config(routes);
