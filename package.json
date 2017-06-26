@@ -38,6 +38,7 @@
     "concat-files": "^0.1.1",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.8.0",
+    "eslint-plugin-angular": "^2.5.0",
     "node-cmd": "^3.0.0",
     "node-sass": "^4.5.3",
     "node-watch": "^0.5.4"

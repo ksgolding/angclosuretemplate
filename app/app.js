@@ -1,11 +1,6 @@
-/**
- * Root application namespace, app bootstrap.
- * This starts the app.
- * export default == static class.
- */
-export default class app {
-};
+import main from './main/main';
 
+// Bootstrap the application.
 $(document).ready(function() {
     angular.bootstrap(document, ['app']);
 });

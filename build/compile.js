@@ -68,13 +68,18 @@ addExterns(gcc_params);
 // TODO Should be configurable.
 gcc_params.push("--compilation_level SIMPLE");
 
+// gcc_params.push(' --language_in ECMASCRIPT6');
+// gcc_params.push(' --language_out ECMASCRIPT5_STRICT');
 // Add the main application js files, unfortunately order matters here.
+// gcc_params.push("--js_module_root " + globals.APP_PATH);
+// gcc_params.push("--entry_point " + 'app.js');
+
 gcc_params.push(" --js " + path.join(globals.APP_PATH, 'controller.js'));
 gcc_params.push(" --js " + path.join(globals.APP_PATH, 'routes.js'));
 gcc_params.push(" --js " + path.join(globals.APP_PATH, 'module.js'));
 gcc_params.push(" --js " + path.join(globals.APP_PATH, 'app.js'));
 
-// Add all the rest of the files.
+// Add all the rest of the js files.
 gcc_params.push(" --js " + path.join(globals.APP_PATH, '**/**.js'));
 
 // Add the compiled output path.
