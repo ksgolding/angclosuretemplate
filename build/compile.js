@@ -68,16 +68,20 @@ addExterns(gcc_params);
 // TODO Should be configurable.
 gcc_params.push("--compilation_level SIMPLE");
 
-// gcc_params.push(' --language_in ECMASCRIPT6');
-// gcc_params.push(' --language_out ECMASCRIPT5_STRICT');
+gcc_params.push("-W  VERBOSE");
+
+gcc_params.push(' --language_in ECMASCRIPT6');
+gcc_params.push(' --language_out ECMASCRIPT5_STRICT');
 // Add the main application js files, unfortunately order matters here.
 // gcc_params.push("--js_module_root " + globals.APP_PATH);
-// gcc_params.push("--entry_point " + 'app.js');
+gcc_params.push("--entry_point=" +  path.join(globals.APP_PATH, 'app.js'));
+// gcc_params.push("--entry_point=app");
+gcc_params.push("--dependency_mode LOOSE");
 
-gcc_params.push(" --js " + path.join(globals.APP_PATH, 'controller.js'));
-gcc_params.push(" --js " + path.join(globals.APP_PATH, 'routes.js'));
-gcc_params.push(" --js " + path.join(globals.APP_PATH, 'module.js'));
-gcc_params.push(" --js " + path.join(globals.APP_PATH, 'app.js'));
+// gcc_params.push(" --js " + path.join(globals.APP_PATH, 'controller.js'));
+// gcc_params.push(" --js " + path.join(globals.APP_PATH, 'routes.js'));
+// gcc_params.push(" --js " + path.join(globals.APP_PATH, 'module.js'));
+// gcc_params.push(" --js " + path.join(globals.APP_PATH, 'app.js'));
 
 // Add all the rest of the js files.
 gcc_params.push(" --js " + path.join(globals.APP_PATH, '**/**.js'));
@@ -88,7 +92,7 @@ gcc_params.push("--js_output_file " + OUTPUT_PATH);
 // Create build command
 var buildCommand = globals.CLOSURE_COMPILER + '  ' + gcc_params.join(' ');
 
-// console.log(buildCommand);
+console.log(buildCommand);
 
 // Run the build command
 globals.run(buildCommand).then(data => {
