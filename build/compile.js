@@ -5,15 +5,18 @@ var globals = require('./globals.js');
 var path = require('path');
 const fs = require('fs');
 var colors = require('colors');
+const klawSync = require('klaw-sync')
+var argv = require('minimist')(process.argv.slice(2));
+
 var OUTPUT_PATH = path.join(globals.BUILD_PATH, globals.COMPILED_JS_NAME);
 var gcc_params = [];
 
 /**
- * This need for this sucks, as the GC team assumes we can include the
- * source map in the header, and does not seem to have an option to add 
- * the sourceMappingURL to the file.
- * If there is one, please let me know!
- * I think adding the sourceMappingURL is better, so this will do that.
+ * I am surprised that the following is needed but it seems that the
+ * GC team assumes we can include the source map in the header, and 
+ * does not seem to have an option to add the sourceMappingURL to the file.
+ * If there is one, please let me know, as I think adding the 
+ * sourceMappingURL to the map file is better than the header option.
  */
 function appendSourceMapReference() {
   fs.appendFileSync(OUTPUT_PATH, '//# sourceMappingURL=../' + globals.SOURCE_MAP_NAME) 
@@ -40,11 +43,36 @@ function addParamArray(params, flag, paramArray) {
   });
 }
 
+/**
+ * Adds debug parameters to params.
+ * @param {Array<string>} params 
+ */
 function addDebugParams (params) {
-  // params.push('--debug');
-  params.push('--source_map_format=V3')
-  params.push('--create_source_map ' +  globals.SOURCE_MAP_NAME);
-};
+  if(argv.debug) {
+    params.push('--source_map_format=V3')
+    params.push('--create_source_map ' +  globals.SOURCE_MAP_NAME);
+  }
+}
+
+/**
+ * Adds js file params.
+ * NOTE: This is here to address some cross compatibility
+ * issues between windows and unix.
+ * @param {Array<string>} params 
+ */
+function addJsFiles(params) {
+ gcc_params.push(" --js " + path.join(globals.APP_PATH, '*.js'));
+ var dirFilter = function(item) {
+   return !/scss|config/g.test(item);
+ }
+ // var result = [];
+ var rootPath = __dirname.replace(path.sep + 'build', '');
+ var dirs = klawSync(globals.APP_PATH, {nofile:true, filter:dirFilter});
+ dirs.forEach(function(dir){
+   var relPath = path.relative(rootPath, dir.path);
+   gcc_params.push(" --js " + relPath + path.sep + '*.js');
+ });
+}
 
 // Add common parameters
 // Set GCC build target environment to browser
@@ -61,39 +89,37 @@ addParamArray(gcc_params, 'jscomp_warning', globals.GCC_WARNING_FLAGS);
 
 // Include closure js libs
 gcc_params.push("--process_closure_primitives true");
+gcc_params.push('--generate_exports');
+gcc_params.push('--export_local_property_definitions');
 
 // Add Externs
 addExterns(gcc_params);
 // Add complication level
 // TODO Should be configurable.
-gcc_params.push("--compilation_level SIMPLE");
+if(argv.debug) {
+  gcc_params.push("--compilation_level SIMPLE");
+} else {
+  gcc_params.push("--compilation_level ADVANCED");
+}
 
-gcc_params.push("-W  VERBOSE");
+gcc_params.push("--module_resolution=NODE");
 
+// gcc_params.push("-W  VERBOSE");
 gcc_params.push(' --language_in ECMASCRIPT6');
 gcc_params.push(' --language_out ECMASCRIPT5_STRICT');
-// Add the main application js files, unfortunately order matters here.
-// gcc_params.push("--js_module_root " + globals.APP_PATH);
+gcc_params.push("--dependency_mode=STRICT");
+
+// Unix vs Windows.. The **.js glob pattern does not recurse in windows, but
+// does in Unix.
+addJsFiles(gcc_params);
 gcc_params.push("--entry_point=" +  path.join(globals.APP_PATH, 'app.js'));
-// gcc_params.push("--entry_point=app");
-gcc_params.push("--dependency_mode LOOSE");
-
-// gcc_params.push(" --js " + path.join(globals.APP_PATH, 'controller.js'));
-// gcc_params.push(" --js " + path.join(globals.APP_PATH, 'routes.js'));
-// gcc_params.push(" --js " + path.join(globals.APP_PATH, 'module.js'));
-// gcc_params.push(" --js " + path.join(globals.APP_PATH, 'app.js'));
-
-// Add all the rest of the js files.
-gcc_params.push(" --js " + path.join(globals.APP_PATH, '**/**.js'));
 
 // Add the compiled output path.
 gcc_params.push("--js_output_file " + OUTPUT_PATH);
 
 // Create build command
 var buildCommand = globals.CLOSURE_COMPILER + '  ' + gcc_params.join(' ');
-
-console.log(buildCommand);
-
+// console.log(buildCommand);
 // Run the build command
 globals.run(buildCommand).then(data => {
   //console.log('cmd data', data);
@@ -110,5 +136,4 @@ globals.run(buildCommand).then(data => {
       console.log(msg.red);
     }
   });
-  
 });

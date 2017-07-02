@@ -1,21 +1,27 @@
 import module from '../module';
 
-module.directive('topnav', function() {
+let topnav = module.directive('topnav', function() {
     return {
         'templateUrl': 'nav/topnav.html',
-        'controller': topnav,
+        'controller': TopNavController,
         'controllerAs': 'vm',
     };
 });
 
-export class topnav {
+/**
+ * @unrestricted
+ */
+export class TopNavController {
     /**
      * @param {!angular.Scope} $scope
      * @ngInject
      */
     constructor($scope) {
         this.scope = $scope;
-
+       
+        /**
+         * @export
+         */
         this.menu = [{
             'link': '#',
             'title': 'link 1',
@@ -28,5 +34,6 @@ export class topnav {
             'link': '#',
             'title': 'link 3',
             }];
-        }
+    }
 }
+
