@@ -12,7 +12,8 @@ module.exports = {
     },
     "rules": {
         "no-unused-vars": 1,
-        "no-undef": 1
+        "no-undef": 1,
+        "no-console": 0
     },
     "linebreak-style": null
 };

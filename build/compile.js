@@ -87,7 +87,7 @@ addDebugParams(gcc_params);
 addParamArray(gcc_params, 'jscomp_error', globals.GCC_ERROR_FLAGS);
 addParamArray(gcc_params, 'jscomp_warning', globals.GCC_WARNING_FLAGS);
 
-// Include closure js libs
+// Angular flags.
 gcc_params.push("--process_closure_primitives true");
 gcc_params.push('--generate_exports');
 gcc_params.push('--export_local_property_definitions');

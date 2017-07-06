@@ -15,7 +15,8 @@
     "build": "npm run clean && npm run lint && npm run copy && npm run scss && npm run bundle && npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --fix app/**.js",
-    "start": "npm run build && npm run server"
+    "start": "npm run build && npm run server",
+    "docs": "./node_modules/.bin/jsdoc -c jsdoc_conf.json -d ./docs"
   },
   "keywords": [
     "angular",
@@ -40,6 +41,7 @@
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.8.0",
     "eslint-plugin-angular": "^2.5.0",
+    "jsdoc": "^3.4.3",
     "klaw-sync": "^2.1.0",
     "minimist": "^1.2.0",
     "node-cmd": "^3.0.0",

@@ -6,4 +6,5 @@ var globals = require('./globals.js');
 var colors = require('colors');
 console.log('Clearing directory:', globals.BUILD_PATH);
 fs.emptyDirSync(globals.BUILD_PATH);
+fs.emptyDirSync(globals.DOCS_PATH);
 console.log('Clean Success'.green);

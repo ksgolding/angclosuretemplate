@@ -17,6 +17,10 @@ var path = require('path');
      */
     BUILD_PATH: 'dist',
     /**
+     * jsdocs path
+     */
+    DOCS_PATH: 'docs',
+    /**
      * Source path
      */
     APP_PATH: 'app',
