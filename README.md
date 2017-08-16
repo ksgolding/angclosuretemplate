@@ -62,3 +62,6 @@ https://www.npmjs.com/package/http-server
 
 ## What this project is not
 This project does not aim to be a definitive guide on project structure, design patterns or even best practices. That said, we are aiming to follow best practices and good design patterns and we will do our best to update the project to address issues and deficiencies. This project does not aim to reproduce the great work others have done creating very complete and great angular seed projects, but a framework to adapt/use those projects with Google Closure.
+
+## Testing
+Unit testing is a valuable tool, but adds a maintenance a burden. In most cases, it worth the effort, in some not so much. Unit testing should be focused and solid. 
