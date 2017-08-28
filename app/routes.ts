@@ -1,16 +1,15 @@
+
 /**
  * Defines the application routes.
  */
-var routes = (function () {
+export default class routes {
     /**
      * @param {angular.$routeProvider} $routeProvider
      * @ngInject
      */
-    function routes($routeProvider) {
+    constructor($routeProvider) {
         $routeProvider.otherwise({
-            template: '<main></main>'
+        template: '<main></main>',
         });
     }
-    return routes;
-}());
-export default routes;
+}

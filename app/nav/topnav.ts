@@ -1,11 +1,13 @@
 import module from '../module';
-var topnav = module.directive('topnav', function () {
+
+let topnav = module.directive('topnav', function() {
     return {
         'templateUrl': 'nav/topnav.html',
         'controller': TopNavController,
-        'controllerAs': 'vm'
+        'controllerAs': 'vm',
     };
 });
+
 /**
  * Controller for the application nav bar.
  * For the purposes of this example, this class is here to demonstrate
@@ -17,34 +19,34 @@ var topnav = module.directive('topnav', function () {
  * @see https://github.com/google/closure-compiler/wiki/Annotating-JavaScript-for-the-Closure-Compiler
  * @unrestricted
  */
-var TopNavController = (function () {
+export class TopNavController {
     /**
-     * The ngInject parameter is required for all angular controller classes.
+     * The ngInject parameter is required for all angular controller classes. 
      * @param {!angular.Scope} $scope
      * @ngInject
      */
-    function TopNavController($scope) {
+    constructor($scope) {
         this.scope = $scope;
+       
         /**
          * Any property (or method) that will be used in an angular
-         * template needs to be either annotated with export, or be declared with
+         * template needs to be either annotated with export, or be declared with 
          * bracket notation,  e.g. this['menu']
          * @see https://google.github.io/styleguide/angularjs-google-style.html
          * @export
          */
         this.menu = [{
-                'link': '#',
-                'title': 'link 1'
+            'link': '#',
+            'title': 'link 1',
             },
             {
-                'link': '#',
-                'title': 'link 2'
+            'link': '#',
+            'title': 'link 2',
             },
             {
-                'link': '#',
-                'title': 'link 3'
+            'link': '#',
+            'title': 'link 3',
             }];
     }
-    return TopNavController;
-}());
-export { TopNavController };
+}
+

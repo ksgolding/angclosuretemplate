@@ -53,6 +53,8 @@
     "minimist": "^1.2.0",
     "node-cmd": "^3.0.0",
     "node-sass": "^4.5.3",
-    "node-watch": "^0.5.4"
+    "node-watch": "^0.5.4",
+    "tsickle": "^0.23.6",
+    "typescript": "^2.3.4"
   }
 }
