@@ -20,6 +20,9 @@ let topnav = module.directive('topnav', function() {
  * @unrestricted
  */
 export class TopNavController {
+
+    scope: angular.IScope;
+    menu: Array<object>;
     /**
      * The ngInject parameter is required for all angular controller classes. 
      * @param {!angular.Scope} $scope

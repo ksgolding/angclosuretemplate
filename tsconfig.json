@@ -1,7 +1,11 @@
 {
     "compilerOptions": {
-        "module":"es6",
-        "sourceMap": false
+        "module":"commonjs",
+        "sourceMap": false,
+        "pretty": true,
+        "outDir": ".jsout/",
+        "allowSyntheticDefaultImports": true,
+        "lib": ["ES5", "ES2015.core"]
     },
     "include": [
         "app/**/*"

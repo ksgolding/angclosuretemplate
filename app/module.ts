@@ -1,5 +1,6 @@
 import routes from './routes';
 import controller from './controller';
+import angular from "angular";
 
 /**
  * Creates the main angular application.

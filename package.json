@@ -33,12 +33,19 @@
     "fs-extra": "^3.0.0",
     "google-closure-compiler": "^20170423.0.0",
     "jquery": "^3.2.1",
-    "js-polyfills": "^0.1.33"
+    "js-polyfills": "^0.1.33",
+    "tsickle": "^0.23.6",
+    "typescript": "^2.3.4"
   },
   "devDependencies": {
     "angular": "^1.6.5",
     "angular-mocks": "^1.6.5",
     "angular-ui-router": "^1.0.3",
+    "@types/angular": "^1.6.31",
+    "@types/angular-mocks": "^1.5.11",
+    "@types/angular-ui-router": "^1.1.37",
+    "@types/jasmine": "^2.5.54",
+    "@types/jquery": "^3.2.12",
     "colors": "^1.1.2",
     "concat-files": "^0.1.1",
     "eslint": "^3.19.0",
@@ -53,8 +60,6 @@
     "minimist": "^1.2.0",
     "node-cmd": "^3.0.0",
     "node-sass": "^4.5.3",
-    "node-watch": "^0.5.4",
-    "tsickle": "^0.23.6",
-    "typescript": "^2.3.4"
+    "node-watch": "^0.5.4"
   }
 }
